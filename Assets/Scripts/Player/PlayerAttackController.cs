@@ -63,7 +63,7 @@ namespace Player
 
             for (int i = 0; i < findEnemy; i++)
             {
-                if (enemys[i].GetComponent<EnemyController>() && enemys[i].GetComponent<EnemyController>().infected)
+                if (enemys[i].GetComponent<EnemyController>() && enemys[i].GetComponent<EnemyController>().Infected)
                 {
                     _enemy = enemys[i].GetComponent<EnemyController>();
                     return;

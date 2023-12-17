@@ -7,9 +7,8 @@ namespace Player
     {
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<EnemyController>())
+            if (other.TryGetComponent(out EnemyController enemy))
             {
-                var enemy = other.GetComponent<EnemyController>();
                 enemy.CheckInfected();
             }
         }

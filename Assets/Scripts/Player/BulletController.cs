@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using AI;
 using UnityEngine;
 
@@ -9,22 +6,22 @@ namespace Player
     public class BulletController : MonoBehaviour
     {
         [SerializeField] private float damage;
+
         private void Start()
         {
-            Invoke(nameof(Diactive), 3);
+            Invoke(nameof(Deactivate), 3);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<EnemyController>())
+            if (other.TryGetComponent(out EnemyController enemy))
             {
-                var enemy = other.GetComponent<EnemyController>();
                 enemy.TakeDamage(damage);
-                Diactive();
+                Deactivate();
             }
         }
 
-        private void Diactive()
+        private void Deactivate()
         {
             gameObject.SetActive(false);
         }

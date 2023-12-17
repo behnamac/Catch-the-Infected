@@ -6,6 +6,7 @@ namespace Player
     public class PlayerCollisionControl : MonoBehaviour
     {
         private PlayerAttackController _playerAttack;
+
         private void Awake()
         {
             _playerAttack = GetComponent<PlayerAttackController>();
@@ -13,17 +14,17 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Ammu"))
+            if (other.CompareTag("Ammu"))
             {
                 _playerAttack.AddAmmu();
                 Destroy(other.gameObject);
             }
-            else if (other.gameObject.CompareTag("Coin"))
+            else if (other.CompareTag("Coin"))
             {
                 UiController.Instance.AddCoin(1);
                 Destroy(other.gameObject);
             }
-            else if (other.gameObject.CompareTag("FinishLine"))
+            else if (other.CompareTag("FinishLine"))
             {
                 LevelManager.instance.LevelComplete();
             }
